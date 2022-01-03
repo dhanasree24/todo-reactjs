@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Input from "./components/InputField";
+import Display from "./components/Display";
+import "./App.css";
+class App extends React.Component {
+  state = {
+    Notes: [],
+  };
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  constructor() {
+    super();
+  }
+
+  handleChange = (a) => {
+    //Updating inputfield component state
+    //console.log(a);
+    //this.setState({ Notes: [...this.state.Notes, a] });
+    this.state.Notes.push(a);
+    console.log(this.state.Notes);
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <Input handleClick={this.handleChange} />
+        <Display />
+      </div>
+    );
+  }
 }
 
 export default App;
